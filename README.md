@@ -16,7 +16,7 @@ are being published, run `rostopic list`. Furthermore to verify that data is bei
 get live feed using <LIVE FEED SCRIPT>
 
 Now to synchronize all the image feeds, run `sync_example.launch`. To verify, run 
-`rostopic list` and you can see the three following topics:
+`rostopic list` and you can see the three following topics:<br />
 `/camera1/color/image_raw/sync`<br />
 `/camera2/fisheye1/image_raw/sync`<br />
 `/camera2/fisheye2/image_raw/sync`<br />

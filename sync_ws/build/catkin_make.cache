@@ -1,0 +1,2 @@
+sync_example
+-DCATKIN_DEVEL_PREFIX=/home/e4e/sync_ws/devel -DCMAKE_INSTALL_PREFIX=/home/e4e/sync_ws/install -G Unix Makefiles

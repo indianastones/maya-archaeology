@@ -1,0 +1,10 @@
+<launch>
+	<node name="sync_example" pkg="sync_example" type="sync_example">
+
+		<remap from="/camera1/color/image_raw" to="in1" />
+		<remap from="/camera2/fisheye1/image_raw" to="in2" />
+		<remap from="/camera2/fisheye2/image_raw" to="in3" />
+
+	</node>
+
+</launch>

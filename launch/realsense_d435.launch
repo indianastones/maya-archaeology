@@ -1,0 +1,27 @@
+<launch>
+    
+  <arg name="record_prefix" default="realsense2" />
+
+  <node pkg="rosbag" type="record" name="rosbag_record_realsense2"
+        args="-o $(arg record_prefix)
+		      /camera1/color/camera_info
+			  /camera1/color/image_raw/throttled
+			  /tf
+              /tf_static" />
+
+		  <!--<include file="realsense2.launch" />-->
+
+		  <node name="throttle" pkg="topic_tools" type="throttle" args="messages camera1/color/image_raw/sync 4.0 camera1/color/image_raw/throttled"/>
+  
+  <node name="image_viewd1_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera1/color/image_raw/sync"/>
+    <param name="autosize" value="true" />
+  </node>
+  
+  <node name="image_viewd1_2" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera1/color/image_raw/throttled"/>
+    <param name="autosize" value="true" />
+  </node>
+ 
+
+</launch>
