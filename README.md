@@ -1,5 +1,5 @@
 ## Maya-Archaeology
-Pipeline to retrieve and calibrate data from the Intel Realsense Camera setup
+Pipeline to retrieve and calibrate data from the Intel Realsense Camera setup --
 
 Check if devices are connected using `lsusb`. When you do `lsusb`, even though both devices
 are connected one device has no ID name. This is expected!
@@ -17,13 +17,13 @@ get live feed using <LIVE FEED SCRIPT>
 
 Now to synchronize all the image feeds, run `sync_example.launch`. To verify, run 
 `rostopic list` and you can see the three following topics:
-/camera1/color/image_raw/sync
-/camera2/fisheye1/image_raw/sync
-/camera2/fisheye2/image_raw/sync
+`/camera1/color/image_raw/sync`<br />
+`/camera2/fisheye1/image_raw/sync`<br />
+`/camera2/fisheye2/image_raw/sync`<br />
 
 Now, to throttle the FPS of the nodes, run script `throttle_nodes.sh`.
 
 <INSERT CALLIBRATION WORKFLOW>
-	
+
 
 
