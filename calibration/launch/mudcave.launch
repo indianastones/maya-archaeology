@@ -1,0 +1,48 @@
+<launch>
+    
+  <arg name="record_prefix" default="realsense2" />
+  <node pkg="rosbag" type="record" name="t265_d435_"
+        args="-o $(arg record_prefix)
+			  /camera2/fisheye1/image_raw/compressed
+			  /camera2/fisheye2/image_raw/compressed
+			  /camera1/color/image_raw/compressed
+			  /camera1/color/camera_info
+			  /camera2/fisheye1/camera_info
+			  /camera2/fisheye2/camera_info
+              /aligned_depth_to_color/camera_info
+			  /aligned_depth_to_color/image_raw/compressed
+			  /camera1/depth/image_rect_raw/compressed
+			  /camera1/depth/camera_info
+			  /camera1/extrinsics/depth_to_color
+			  /camera1/extrinsics/depth_to_infra1
+			  /camera1/extrinsics/depth_to_infra2
+			  /camera1/infra1/camera_info
+			  /camera1/infra2/camera_info
+			  /camera2/gyro/imu_info
+			  /camera2/gyro/sample
+			  /camera2/odom/sample
+			  /camera2/accel/imu_info
+			  /camera2/accel/sample
+			  /tf
+			  /tf_static" />
+		  <!--<include file="realsense2.launch" />-->
+
+ 
+  <node name="image_viewf1_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera2/fisheye1/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+  
+  
+  <node name="image_viewf2_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera2/fisheye2/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+  
+  <node name="image_viewd1_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera1/color/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+  
+ 
+</launch>

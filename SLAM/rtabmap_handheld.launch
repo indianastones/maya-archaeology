@@ -1,0 +1,14 @@
+<launch>
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_t265" args="0 0 0 0 0 0 odom t265_odom_frame"/>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="t265_to_d435" args="0.01912705 0.10740236 0.01056355 -0.00023611 0.00855822 0.00901171 t265_pose_frame d435_link"/-->
+	<node pkg="tf" type="static_transform_publisher" name="odom_to_t265" args="0 0 0 0 0 0 odom t265_odom_frame 100"/>
+	<node pkg="tf" type="static_transform_publisher" name="t265_to_d435" args="0.01912705 0.10740236 0.01056355 -0.00023611 0.00855822 0.00901171 0.99992274 t265_pose_frame d435_link 100"/>
+
+    <include file="$(find rs_robot_sensors)/launch/rtabmap.launch">
+        <!--
+        <arg name="frame_id" value="t265_odom_frame"/>
+        <arg name="frame_id" value="odom"/-->
+        
+        <arg name="frame_id" value="t265_pose_frame"/>
+    </include>
+</launch>

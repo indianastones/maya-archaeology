@@ -1,0 +1,51 @@
+<launch>
+    
+  <arg name="record_prefix" default="realsense2" />
+  <node pkg="rosbag" type="record" name="rosbag_record_realsense2"
+        args="-o $(arg record_prefix)
+			  /camera1/color/image_raw/throttled
+			  /camera2/fisheye1/image_raw/throttled
+			  /tf
+			  /tf_static" />
+		  <!--<include file="realsense2.launch" />-->
+
+  <node name="throttle1" pkg="topic_tools" type="throttle" args="messages camera2/fisheye1/image_raw/sync 0.25 camera2/fisheye1/image_raw/throttled"/>
+ 
+  <node name="throttle2" pkg="topic_tools" type="throttle" args="messages camera2/fisheye2/image_raw/sync 0.25 camera2/fisheye2/image_raw/throttled"/>
+  
+ 
+  <node name="throttle3" pkg="topic_tools" type="throttle" args="messages camera1/color/image_raw/sync 0.25 camera1/color/image_raw/throttled"/>
+  
+ 
+  <!-- <node name="image_viewf1_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera2/fisheye1/image_raw/sync"/>
+    <param name="autosize" value="true" />
+  </node>-->
+  
+  <node name="image_viewf1_2" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera2/fisheye1/image_raw/throttled"/>
+    <param name="autosize" value="true" />
+  </node>
+ 
+  
+  <!-- <node name="image_viewf2_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera2/fisheye2/image_raw/sync"/>
+    <param name="autosize" value="true" />
+  </node>-->
+  
+  <node name="image_viewf2_2" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera2/fisheye2/image_raw/throttled"/>
+    <param name="autosize" value="true" />
+  </node>
+ 
+  <!-- <node name="image_viewd1_1" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera1/color/image_raw/sync"/>
+    <param name="autosize" value="true" />
+  </node>-->
+  
+  <node name="image_viewd1_2" pkg="image_view" type="image_view" respawn="false" output="screen">
+	  <remap from="image" to="camera1/color/image_raw/throttled"/>
+    <param name="autosize" value="true" />
+  </node>
+ 
+</launch>

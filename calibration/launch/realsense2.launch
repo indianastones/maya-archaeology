@@ -1,0 +1,37 @@
+<!--<launch>
+
+ <include file="nodelet.launch.xml">
+	 <arg name="serial_no_1" value="814412071723" />
+  </include>
+ 
+  <include file="nodelet.launch.xml">
+	 <arg name="serial_no_2" value="845412110514" />
+  </include>
+  
+</launch>
+-->
+
+<launch>
+	<arg name="serial_no_camera1"    			default="845412110514"/> 		<!--Note: Replace with actual serial number -->
+	<arg name="camera1"              			default="camera1"/>		<!-- Note: Replace with camera name -->
+	<!--<arg name="tf_prefix"         default="$(arg camera1)"/>
+	<arg name="initial_reset"             default="false"/>-->
+
+	<group ns="$(arg camera1)">
+		<include file="nodelet.launch.xml">
+			<arg name="serial_no"             value="$(arg serial_no_camera1)"/>
+			<!--<arg name="tf_prefix"         		value="$(arg tf_prefix)"/>
+			<arg name="initial_reset"         value="$(arg initial_reset)"/>-->
+		</include>
+	</group>
+
+	<!-- <group ns="$(arg camera2)">
+		<include file="nodelet.launch.xml">
+			<arg name="serial_no"             value="$(arg serial_no_camera2)"/>
+			 <arg name="tf_prefix"		          value="$(arg tf_prefix_camera2)"/>
+			<arg name="initial_reset"         value="$(arg initial_reset)"/>
+		</include>
+	</group>
+	-->
+</launch>
+
