@@ -23,7 +23,11 @@ Now to synchronize all the image feeds, run `sync_example.launch`. To verify, ru
 
 Now, to throttle the FPS of the nodes, run script `throttle_nodes.sh`.
 
-<INSERT CALLIBRATION WORKFLOW>
+Calibration is done using Kalibr. Run calibration as follows
+`./run_kalibr_t265.sh <grid_file> <bag_file> <output_folder>`
+
+To run SLAM first launch the two cameras, provide parameters from calibration and then
+`roslaunch rtabmap_handeld.launch`
 
 
 
